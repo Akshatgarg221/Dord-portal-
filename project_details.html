@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #0278bdd7;
+            width: 100%;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .iitk {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .iitk img {
+            margin-left: 15px;
+            height: 80px;
+            width: 80px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-info {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .project-info h3,
+        .tags h3 {
+            background-color: #e8dfff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-description {
+            flex: 2;
+            background-color: #fff5d7;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tablink {
+            background-color: #d1f7e9;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            flex-grow: 1;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .tablink:hover {
+            background-color: #b8e1d1;
+        }
+
+        .tablink.active {
+            background-color: #b8e1d1;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #Basic ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #Basic ul li {
+            background-color: #d1f7e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logoimage {
+            max-width: 60px;
+            max-height: 60px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+            max-width: 100px; /* Adjust the max-width */
+        }
+
+        button:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .bookmark {
+            background-color: #3399ff;
+            color: black;
+        }
+
+        .contact {
+            background-color: #ffcc00;
+            color: black;
+        }
+
+        .apply {
+            background-color: #ff3300;
+            color: black;
+        }
+
+        .btn {
+            background: #b2bbff;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            width: 40%;
+            max-width: 120px;
+        }
+
+        .btn:first-child {
+            background: #90E0EF;
+            color: #094A84;
+        }
+
+        .btn:hover {
+            background: #01579b;
+        }
+
+        .btn:first-child:hover {
+            background-color: #5fcbdf;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+            }
+
+            .iitk {
+                flex-direction: row;
+            }
+
+            .project-details {
+                flex-direction: row;
+            }
+
+            .buttons {
+                justify-content: flex-end;
+            }
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            padding: 10px 20px;
+            background-color: #0278bdd7;
+            border-bottom: 2px solid #000080;
+        }
+        .header .title {
+            margin-right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #f3f3f7;
+        }
+        .header .subtitle {
+            font-size: 14px;
+            color: #f5f7f8;
+        }
+        .header img {
+            height: 80px;
+        }
+    </style>
+</head>
+{% load static %}
+
+<body>
+    <div class="header">
+            <div>
+                <div class="title">Office of Research & Development</div>
+                <div class="subtitle">Indian Institute of Technology Kanpur</div>
+            </div>
+            <!--{% load static %}-->
+            <img src="{% static 'dashboard/iitk logo white.png'%}" alt="IIT Kanpur Logo">
+        </div>
+    {% block content %}
+    <div class="container">
+        <div class="content">
+            <div class="project-details">
+                <div class="project-info">
+                    <h3>Project Details</h3>
+                    <p><strong>Project Title:</strong> {{projects.title}}</p>
+                    <p><strong>Serial No.:</strong> {{projects.serial_no}}</p>
+                    <p><strong>Department/Organization:</strong> {{projects.department}}</p>
+                    <p><strong>Country:</strong> {{projects.country}}</p>
+                </div>
+                <div class="project-description">
+                    <p>{{projects.description}}</p>
+                </div>
+            </div>
+            <div class="tags">
+                <div class="tabs">
+                    <button class="tablink active" onclick="openTab(event, 'Basic')">Basic</button>
+                    <button class="tablink" onclick="openTab(event, 'Eligibility')">Eligibility</button>
+                    <button class="tablink" onclick="openTab(event, 'More')">More</button>
+                </div>
+                <div id="Basic" class="tabcontent" style="display: block;">
+                    <h3>{{projects.tags}}</h3>
+                    <ul>
+                        <li><strong>Vacancy:</strong> {{projects.vacancy}}</li>
+                        <li><strong>Duration:</strong> {{projects.duration}}</li>
+                        <li><strong>Release Date:</strong> {{projects.release_date}}</li>
+                        <li><strong>Deadline:</strong> {{projects.deadline}}</li>
+                        <li><strong>Budget:</strong> {{projects.budget}}</li>
+                    </ul>
+                </div>
+                <div id="Eligibility" class="tabcontent" style="display: block;">
+                    <h3>Eligibility</h3>
+                    <ul>
+                        <li><strong>Open to:</strong> {{projects.open_to}}</li>
+                        <li><strong>Expertise:</strong> {{projects.expertise}}</li>
+                    </ul>
+                </div>
+                <div id="More" class="tabcontent">
+                    <h3>More</h3>
+                    <p>Additional information about the project.</p>
+                </div>
+                <div class="buttons">
+                    <a href="{% url 'applyforproject' project_id=projects.id %}"> <button class="apply">APPLY NOW</button></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+
+</html>

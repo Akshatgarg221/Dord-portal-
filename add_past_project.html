@@ -1,0 +1,162 @@
+{% load static crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Past Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Load countries and states from JSON data
+            var countries = {{ countries_json|safe }};
+            var states = {{ states_json|safe }};
+
+            // Populate country dropdown
+            var countryDropdown = $('#id_country');
+            $.each(countries, function(index, country) {
+                countryDropdown.append($('<option>', {
+                    value: country[0],
+                    text: country[1]
+                }));
+            });
+
+            // Handle country change event
+            $('#id_country').change(function() {
+                var countryCode = $(this).val();
+                var stateDropdown = $('#id_state');
+                stateDropdown.empty(); // Clear existing options
+                stateDropdown.append($('<option>', {
+                    value: '',
+                    text: 'Select State'
+                }));
+
+                if (states[countryCode]) {
+                    $.each(states[countryCode], function(index, state) {
+                        stateDropdown.append($('<option>', {
+                            value: state[0],
+                            text: state[1]
+                        }));
+                    });
+                }
+            });
+
+            // Trigger change event to populate state dropdown on page load
+            $('#id_country').trigger('change');
+        });
+    </script>
+    <style>
+        h2 {
+            color: #fff;
+            font-weight: bold;
+            /*background-color: rgba(0, 0, 0, 0.5);*/
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .form-label {
+            color: #fff;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f7;
+            background: url('{% static 'profile/background.jpg' %}') no-repeat center center;
+            background-size: cover;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #0278bdd7;
+            border-bottom: 2px solid #000080;
+        }
+
+        .header .title {
+            margin-right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #f3f3f7;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            color: #f5f7f8;
+        }
+
+        .header img {
+            height: 80px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #0278bdd7;
+            border-color: #0278bdd7;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <div class="title">Office of Research & Development</div>
+            <div class="subtitle">Indian Institute of Technology Kanpur</div>
+        </div>
+        <img src="{% static 'dashboard/iitk logo white.png'%}" alt="IIT Kanpur Logo" class="logoimage">
+    </div>
+
+    <div class="container mt-5">
+        <div class="form-container">
+            <h2 >Past Project</h2>
+            <form method="post" action="{% url 'add_past_project' %}">
+                {% csrf_token %}
+                {% crispy form %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
